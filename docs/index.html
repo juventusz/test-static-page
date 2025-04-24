@@ -6,64 +6,39 @@
   <title>SaVe Style</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
-    }
-
     @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
+      0%, 100% {
+        transform: translateY(0); /* Start at the center */
+      }
+      50% {
+        transform: translateY(90vh); /* Move the text to the bottom (edge of the page) */
+      }
     }
-    50% {
-      transform: translateY(-30px);
+  
+    @keyframes bgCycle {
+      0% {
+        background-color: #fff;
+      }
+      25% {
+        background-color: #f0f8ff;
+      }
+      50% {
+        background-color: #e0f7fa;
+      }
+      75% {
+        background-color: #fce4ec;
+      }
+      100% {
+        background-color: #fff;
+      }
     }
-  }
-
-  @keyframes bgCycle {
-    0% {
-      background-color: #fff;
+  
+    body {
+      animation: bgCycle 20s infinite ease-in-out;
+      transition: background-color 1s;
+      color: #111;
     }
-    25% {
-      background-color: #f0f8ff;
-    }
-    50% {
-      background-color: #e0f7fa;
-    }
-    75% {
-      background-color: #fce4ec;
-    }
-    100% {
-      background-color: #fff;
-    }
-  }
-
-  body {
-    animation: bgCycle 20s infinite ease-in-out;
-    transition: background-color 1s;
-    color: #111;
-  }
-
-  .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url('https://images.unsplash.com/photo-1584467735871-28e34cb93a2f?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
-    height: 90vh;
-    color: #fff;
-    text-align: center;
-    position: relative;
-  }
-
-  .hero h2 {
-    font-size: 3rem;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 1rem 2rem;
-    border-radius: 10px;
-    animation: bounce 2s infinite;
-  }
+  
     header {
       background-color: #000;
       color: #fff;
@@ -71,13 +46,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+      z-index: 10;
     }
-
+  
     header h1 {
       font-size: 1.5rem;
       font-weight: bold;
     }
-
+  
     nav a {
       color: #fff;
       margin-left: 1.5rem;
@@ -85,46 +62,69 @@
       font-weight: bold;
       text-transform: uppercase;
     }
-    
+  
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('https://images.unsplash.com/photo-1584467735871-28e34cb93a2f?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+      height: 90vh;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+  
+    .hero h2 {
+      font-size: 3rem;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      animation: bounce 2s infinite ease-in-out;
+      position: absolute; /* Allow it to move vertically */
+      top: 50%; /* Start vertically centered */
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
     .products {
       padding: 4rem 2rem;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 2rem;
     }
-
+  
     .product {
       border: 1px solid #ddd;
       border-radius: 10px;
       overflow: hidden;
       transition: transform 0.3s;
     }
-
+  
     .product:hover {
       transform: scale(1.05);
     }
-
+  
     .product img {
       width: 100%;
       height: 250px;
       object-fit: cover;
     }
-
+  
     .product-info {
       padding: 1rem;
       text-align: center;
     }
-
+  
     .product-info h3 {
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
     }
-
+  
     .product-info p {
       font-size: 1rem;
       color: #777;
     }
-  </style>
+  </style>  
 </head>
 <body>
   <header>
